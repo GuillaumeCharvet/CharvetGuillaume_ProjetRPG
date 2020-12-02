@@ -1,33 +1,39 @@
 body{
-  background-image: url(https://cdn.dribbble.com/users/1514670/screenshots/11832205/media/a695bccedcec519449ce7b8de2017f8e.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	background-image: url(https://cdn.dribbble.com/users/1514670/screenshots/11832205/media/a695bccedcec519449ce7b8de2017f8e.jpg);
+	background-repeat: no-repeat;
+	background-size: 1920px 1080px;
 }
 
-.monstre{
-  text-align: center;
-  margin-left: 10%;
-  margin-right: 10%;
-  background-color: #F5F5DC;
-  width: 80%;
-  border: 2px solid black;
-  height: 50%;
+.monstres{
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	background-color: #F5F5DC;
+	margin-left: 10%;
+	margin-right: 10%;
+	#width: 80%;
+	border: 2px solid black;
+	height: 40%;
 }
 
 #monstre1{
-  width: 15%;
+  
 }
 
 .heros{
-  text-align: center;
-  background-color: #FFE4C4;
-  margin-left: 10%;
-  margin-right: 10%;
-  width: 80%;
-  border: 2px solid black;
-  height: 50%;
+	display: flex;
+	text-align: center;
+	background-color: #FFE4C4;
+	margin-left: 10%;
+	margin-right: 10%;
+	#width: 80%;
+	border: 2px solid black;
+	height: 40%;
 }
 
 #heros1{
-  width: 15%;
+  
 }
