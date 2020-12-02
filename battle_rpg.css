@@ -25,6 +25,7 @@ body{
 
 .heros{
 	display: flex;
+	justify-content: space-around;
 	text-align: center;
 	background-color: #FFE4C4;
 	margin-left: 10%;
