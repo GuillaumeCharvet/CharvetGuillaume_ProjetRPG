@@ -1,21 +1,33 @@
 body{
-  background-image: url("paper.gif");
+  background-image: url(https://cdn.dribbble.com/users/1514670/screenshots/11832205/media/a695bccedcec519449ce7b8de2017f8e.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .monstre{
   text-align: center;
+  margin-left: 10%;
+  margin-right: 10%;
   background-color: #F5F5DC;
-  width: 15%;
+  width: 80%;
   border: 2px solid black;
+  height: 50%;
 }
 
 #monstre1{
-  
+  width: 15%;
 }
 
 .heros{
   text-align: center;
   background-color: #FFE4C4;
-  width: 15%;
+  margin-left: 10%;
+  margin-right: 10%;
+  width: 80%;
   border: 2px solid black;
+  height: 50%;
+}
+
+#heros1{
+  width: 15%;
 }
