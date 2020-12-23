@@ -35,6 +35,9 @@ var nb_heros = 4;
 var monstre_1 = document.getElementById("monstre1");
 var monstre_2 = document.getElementById("monstre2");
 var monstre_3 = document.getElementById("monstre3");
+var image_monstre_1 = document.getElementById("image_monstre1");
+var image_monstre_2 = document.getElementById("image_monstre2");
+var image_monstre_3 = document.getElementById("image_monstre3");
 var hp_monstre_1 = document.getElementById("hpmonstre1");
 var hp_monstre_2 = document.getElementById("hpmonstre2");
 var hp_monstre_3 = document.getElementById("hpmonstre3");
@@ -412,7 +415,7 @@ function debut_tour_monstres(){
 function over_monstre1() {
     monstre_1.style.opacity = "1";
     //afficher("Ceci est gobelin de niveau 4 !",1500);
-    monstre_1.onmouseout = function(){
+    image_monstre_1.onmouseout = function(){
         monstre_1.style.opacity = "0";
     }
 }
@@ -420,7 +423,7 @@ function over_monstre1() {
 function over_monstre2() {
     monstre_2.style.opacity = "1";
     //afficher("Ceci est un chef gobelin de niveau 6 !",1500);
-    monstre_2.onmouseout = function(){
+    image_monstre_2.onmouseout = function(){
         monstre_2.style.opacity = "0";
     }
 }
@@ -428,7 +431,7 @@ function over_monstre2() {
 function over_monstre3() {
     monstre_3.style.opacity = "1";
     //afficher("Ceci est un apprenti gobelin de niveau 4 !",1500);
-    monstre_3.onmouseout = function(){
+    image_monstre_3.onmouseout = function(){
         monstre_3.style.opacity = "0";
     }
 }
@@ -438,9 +441,9 @@ onload = afficher("Le jeu commence !",4000);
 onload = setTimeout(() => {debut_tour_heros();}, 3000);
 
 // Affichage des informations des monstres lorsque l'on passe la souris au-dessus
-monstre_1.onmouseover = over_monstre1;
-monstre_2.onmouseover = over_monstre2;
-monstre_3.onmouseover = over_monstre3;
+image_monstre_1.onmouseover = over_monstre1;
+image_monstre_2.onmouseover = over_monstre2;
+image_monstre_3.onmouseover = over_monstre3;
 
 /*b_att1.onclick = attente_cible();
 b_att2.onclick = attente_cible();
