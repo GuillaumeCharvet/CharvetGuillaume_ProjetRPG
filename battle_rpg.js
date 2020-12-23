@@ -175,6 +175,7 @@ function action_attaque_heros(){
     if(hp_monstres[cible_active].innerHTML == 0){
         monstres_en_vie[cible_active] = false;
         nb_monstres -= 1;
+        afficher_simple("Le monstre "+cible_active+" est mort sous les coups du héros "+heros_actif);
         //afficher_simple("")
         images_monstres[cible_active].style.opacity = 0;
         cibles_boutons[cible_active] = 1;
@@ -185,10 +186,11 @@ function action_attaque_heros(){
 function action_attaque_monstre(monst){
     var degats = Math.max(attaque_monstre - def_heros[heros_actif].innerHTML,0);
     hp_heros[heros_actif].innerHTML = Math.max(hp_heros[heros_actif].innerHTML - Math.max(attaque_monstre - def_heros[heros_actif].innerHTML,0),0);
-    afficher_simple("Le monstre "+monst+" inflige "+degats+" au héros "+heros_actif,1000);
+    afficher_simple("Le monstre "+monst+" inflige "+degats+" dégats au héros "+heros_actif);
     if(hp_heros[heros_actif].innerHTML == 0){
         heros_en_vie[heros_actif] = false;
         nb_heros -= 1;
+        afficher_simple("Le héros "+heros_actif+" est mort sous les coups du monstre "+monst);
         for(al=0; al<3; al++){
             tours_boutons[3*heros_actif+al] = 1;
         }
@@ -231,6 +233,7 @@ function defense(bh){
     heros_actif = bh;
     action_active = 1;
     def_heros[heros_actif].innerHTML = 10 + Number(def_heros[heros_actif].innerHTML);
+    afficher_simple("Le héros "+heros_actif+" augmente sa défense pour ce tour-ci.");
     gestion_tours_boutons();
     actions_faites[heros_actif] = true;
     gestion_boutons_h();
@@ -246,6 +249,7 @@ function soin(){
     action_active = 2;
     mp_heros[heros_actif].innerHTML = Number(mp_heros[heros_actif].innerHTML) - Number(cout_heros[heros_actif].innerHTML);
     hp_heros[hero_moins_hp()].innerHTML = Math.min(30 + Number(hp_heros[hero_moins_hp()].innerHTML),100);
+    afficher_simple("Le héros "+heros_actif+" soigne 30 HP au monstre "+cible_active);
     gestion_tours_boutons();
     actions_faites[heros_actif] = true;
     gestion_boutons_h();
@@ -263,6 +267,7 @@ function tente_def(){
     for(ho=0; ho<3; ho++){
         def_heros[ho].innerHTML = Number(def_heros[ho].innerHTML) + randomInt(-5,10);
     }
+    afficher_simple("Le héros "+heros_actif+" augmente la défense de ses congénères");
     gestion_tours_boutons();
     actions_faites[heros_actif] = true;
     gestion_boutons_h();
@@ -404,6 +409,7 @@ function debut_tour_monstres(){
             if(hp_monstres[po].innerHTML == 0){
                 monstres_en_vie[po] = false;
                 nb_monstres -= 1;
+                afficher_simple("Le monstre "+po+" est mort des brulures du poison");
                 images_monstres[po].style.opacity = 0;
                 cibles_boutons[po] = 1;
             }
