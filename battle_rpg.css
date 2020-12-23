@@ -48,6 +48,7 @@ body{
 
 #monstre1{
 	opacity: 0;
+	background-image: url("images/monstre1.png");
 }
 
 #monstre2{
@@ -98,6 +99,11 @@ body{
 }
 
 .DEF{
+	display: flex;
+	direction: row;
+}
+
+.COUT{
 	display: flex;
 	direction: row;
 }
