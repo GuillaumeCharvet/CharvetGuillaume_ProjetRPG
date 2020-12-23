@@ -171,9 +171,11 @@ function gestion_tours_boutons(){
 // Fonctions pour les attaques de héros sur des monstres
 function action_attaque_heros(){
     hp_monstres[cible_active].innerHTML = Math.max(hp_monstres[cible_active].innerHTML - att_heros[heros_actif].innerHTML,0);
+    afficher_simple("Le héros "+heros_actif+" inflige "+att_heros[heros_actif].innerHTML+" au monstre "+cible_active);
     if(hp_monstres[cible_active].innerHTML == 0){
         monstres_en_vie[cible_active] = false;
         nb_monstres -= 1;
+        //afficher_simple("")
         images_monstres[cible_active].style.opacity = 0;
         cibles_boutons[cible_active] = 1;
     }
@@ -181,9 +183,9 @@ function action_attaque_heros(){
 
 // Fonctions pour les attaques de monstres sur des héros
 function action_attaque_monstre(monst){
-    var degats = Math.max(hp_heros[heros_actif].innerHTML - Math.max(attaque_monstre - def_heros[heros_actif].innerHTML,0),0);
-    hp_heros[heros_actif].innerHTML = degats;
-    afficher("Le monstre "+monst+" inflige "+degats+" au héros "+(heros_actif+1),3000);
+    var degats = Math.max(attaque_monstre - def_heros[heros_actif].innerHTML,0);
+    hp_heros[heros_actif].innerHTML = Math.max(hp_heros[heros_actif].innerHTML - Math.max(attaque_monstre - def_heros[heros_actif].innerHTML,0),0);
+    afficher_simple("Le monstre "+monst+" inflige "+degats+" au héros "+heros_actif,1000);
     if(hp_heros[heros_actif].innerHTML == 0){
         heros_en_vie[heros_actif] = false;
         nb_heros -= 1;
@@ -197,6 +199,7 @@ function action_attaque_monstre(monst){
 // et font un nombre de dégats égal au nombre de marqueurs poisons restants, avec un marqueur qui disparait chaque tour.
 function poison(){
     poison_m[cible_active] += 7;
+    afficher_simple("Le héros "+heros_actif+" applique 7 marqueurs poisons au monstre "+cible_active);
 }
 
 // Fonction appelée lorsqu'un bouton d'attaque est utilisé, et gère les boutons à désactiver ou activer en conséquence
@@ -219,6 +222,7 @@ function swap(){
     var aux_hp = Number(hp_heros[heros_actif].innerHTML);
     hp_heros[heros_actif].innerHTML = Math.min(hp_monstres[cible_active].innerHTML,100);
     hp_monstres[cible_active].innerHTML = aux_hp;
+    afficher_simple("Le héros "+heros_actif+" échange ses HP avec le monstre "+cible_active);
 }
 
 // Fonction appelée lorsqu'un bouton de défense est utilisé, change la valeur de défense, gère les boutons,
@@ -415,7 +419,8 @@ function debut_tour_monstres(){
             var ind_hero = randomInt(1,nb_heros);
             heros_actif = get_ind_heros(ind_hero);            
             //setTimeout(() => {action_attaque_monstre(i);}, 2000);
-            action_attaque_monstre(i);            
+            action_attaque_monstre(i);
+            //setTimeout(() => {afficher_simple("Monstre"+i)}, 2000);
             if(nb_heros == 0){
                 afficher_simple("Malheureusement, les monstres vous ont vaincu !");
                 return;
