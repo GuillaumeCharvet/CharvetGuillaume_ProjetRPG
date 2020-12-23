@@ -7,18 +7,32 @@ body{
 	background-size: 1000px 600px;
 }
 
-.monstres{
+.images_monstres{
 	display: flex;
 	justify-content: space-around;
 	text-align: center;
-	background-color: #F5F5DC;
+	/*background-color: #F5F5DC;*/
 	margin-left: 100px;
 	margin-right: 100px;
 	margin-bottom: 5px;
 	margin-top: 90px;
 	width: 800px;
-	border: 2px solid black;
-	height: 200px;
+	/*border: 2px solid black;*/
+	height: 150px;
+}
+
+.monstres{
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	/*background-color: #F5F5DC;*/
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-bottom: 5px;
+	margin-top: 10px;
+	width: 800px;
+	/*border: 2px solid black;*/
+	height: 50px;
 }
 
 #infos{
@@ -40,15 +54,43 @@ body{
 	justify-content: space-around;
 	text-align: center;
 	background-color: #F5F5DC;
-	margin-top: 25px;
+	margin-top: 5px;
 	width: 150px;
 	border: 2px solid black;
-	height: 150px;
+	height: 40px;
+}
+
+.image_monstre{
+	direction: column;
+	justify-content: space-around;
+	text-align: center;
+	/*background-color: #F5F5DC;*/
+	margin-top: 25px;
+	width: 150px;
+	/*border: 2px solid black;*/
+	height: 100px;
+}
+
+#image_monstre1{
+	background-image: url("images/monstre1.png");
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+#image_monstre2{
+	background-image: url("images/monstre2.png");
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+#image_monstre3{
+	background-image: url("images/monstre3.png");
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
 #monstre1{
 	opacity: 0;
-	background-image: url("images/monstre1.png");
 }
 
 #monstre2{
