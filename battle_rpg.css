@@ -4,7 +4,7 @@ body{
 	flex-direction: column;
 	background-image: url(https://cdn.dribbble.com/users/1514670/screenshots/11832205/media/a695bccedcec519449ce7b8de2017f8e.jpg);
 	background-repeat: no-repeat;
-	background-size: 1920px 1080px;
+	background-size: 1000px 600px;
 }
 
 .monstres{
@@ -12,15 +12,50 @@ body{
 	justify-content: space-around;
 	text-align: center;
 	background-color: #F5F5DC;
-	margin-left: 10%;
-	margin-right: 10%;
-	#width: 80%;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-bottom: 5px;
+	margin-top: 90px;
+	width: 800px;
 	border: 2px solid black;
-	height: 40%;
+	height: 200px;
+}
+
+#infos{
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+	background-color: #F5F5DC;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	width: 800px;
+	border: 2px solid black;
+	height: 20px;
+}
+
+.monstre{
+	direction: column;
+	justify-content: space-around;
+	text-align: center;
+	background-color: #F5F5DC;
+	margin-top: 25px;
+	width: 150px;
+	border: 2px solid black;
+	height: 150px;
 }
 
 #monstre1{
-  
+	opacity: 0;
+}
+
+#monstre2{
+	opacity: 0;
+}
+
+#monstre3{
+	opacity: 0;
 }
 
 .heros{
@@ -28,13 +63,41 @@ body{
 	justify-content: space-around;
 	text-align: center;
 	background-color: #FFE4C4;
-	margin-left: 10%;
-	margin-right: 10%;
-	#width: 80%;
+	margin-left: 100px;
+	margin-right: 100px;
+	margin-top: 5px;
+	width: 800px;
 	border: 2px solid black;
-	height: 40%;
+	height: 200px;
 }
 
-#heros1{
-  
+.hero{
+	direction: column;
+	justify-content: space-around;
+	text-align: center;
+	background-color: #FFE4C4;
+	margin-top: 25px;
+	width: 150px;
+	border: 2px solid black;
+	height: 150px;
+}
+
+.HP{
+	display: flex;
+	direction: row;
+}
+
+.MP{
+	display: flex;
+	direction: row;
+}
+
+.ATT{
+	display: flex;
+	direction: row;
+}
+
+.DEF{
+	display: flex;
+	direction: row;
 }
