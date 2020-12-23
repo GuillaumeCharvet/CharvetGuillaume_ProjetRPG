@@ -38,6 +38,7 @@ var monstre_3 = document.getElementById("monstre3");
 var image_monstre_1 = document.getElementById("image_monstre1");
 var image_monstre_2 = document.getElementById("image_monstre2");
 var image_monstre_3 = document.getElementById("image_monstre3");
+var images_monstres = [image_monstre_1,image_monstre_2,image_monstre_3];
 var hp_monstre_1 = document.getElementById("hpmonstre1");
 var hp_monstre_2 = document.getElementById("hpmonstre2");
 var hp_monstre_3 = document.getElementById("hpmonstre3");
@@ -173,6 +174,7 @@ function action_attaque_heros(){
     if(hp_monstres[cible_active].innerHTML == 0){
         monstres_en_vie[cible_active] = false;
         nb_monstres -= 1;
+        images_monstres[cible_active].style.opacity = 0;
         cibles_boutons[cible_active] = 1;
     }
 }
@@ -226,9 +228,6 @@ function defense(bh){
     action_active = 1;
     def_heros[heros_actif].innerHTML = 10 + Number(def_heros[heros_actif].innerHTML);
     gestion_tours_boutons();
-    /*tours_boutons[3*heros_actif+action_active] = 2;
-    tours_boutons[3*heros_actif+0] = 1;
-    tours_boutons[3*heros_actif+2] = 1;*/
     actions_faites[heros_actif] = true;
     gestion_boutons_h();
     if(toutes_actions_faites()){
@@ -236,6 +235,8 @@ function defense(bh){
     }
 }
 
+// Pouvoir du héros 1 qui soigne le héros vivant avec le moins d'HP, gère les boutons,
+// et vérifie si toutes les actions ont été réalisées, auquel cas c'est au tour des monstres
 function soin(){
     heros_actif = 0;
     action_active = 2;
@@ -249,6 +250,8 @@ function soin(){
     }
 }
 
+// Pouvoir du héros 4 qui booste la valeur de défense de ses alliés pour ce tour d'une valeur aléatoire entre 0 et 10
+// mais qui a aussi une chance de la leur réduire d'une valeur entre 1 et 5.
 function tente_def(){
     heros_actif = 3;
     action_active = 2;
@@ -264,6 +267,7 @@ function tente_def(){
     }
 }
 
+// Pouvoir du héros 2 qui nécessite de choisir un monstre cible pour lui infliger des marqueurs poisons, la fonction gère donc les boutons à activer ou désactiver
 function poi_cible(){
     heros_actif = 1;
     action_active = 2;
@@ -279,6 +283,7 @@ function poi_cible(){
     gestion_boutons_m();
 }
 
+// Pouvoir du héros 3 qui nécessite de choisir un monstre cible pour échanger ses HP, la fonction gère donc les boutons à activer ou désactiver
 function swap_hp(){
     heros_actif = 2;
     action_active = 2;
@@ -294,6 +299,8 @@ function swap_hp(){
     gestion_boutons_m();
 }
 
+// Fonction qui est appelée lorsque l'on cible un monstre. Selon l'action qui aura été choisie, elle déclenche la fonction
+//correspondante (attaque, poison ou swap), gère les boutons et vérifie si toutes les actions ont été réalisées, auquel cas c'est au tour des monstres
 function choix_cible(cib_m){
     cible_active = cib_m;
     if(action_active == 0){
@@ -326,6 +333,7 @@ function choix_cible(cib_m){
     }
 }
 
+// Fonction qui applique l'activation ou la désactivation des boutons des héros selon les valeurs de tours_boutons
 function gestion_boutons_h(){
     for(elem=0; elem<12; elem++){
         if(tours_boutons[elem] == 0){
@@ -337,6 +345,7 @@ function gestion_boutons_h(){
     }
 }
 
+// Fonction qui applique l'activation ou la désactivation des boutons des monstres selon les valeurs de cibles_boutons
 function gestion_boutons_m(){
     for(ele=0; ele<3; ele++){
         if(cibles_boutons[ele] == 0){
@@ -348,6 +357,7 @@ function gestion_boutons_m(){
     }
 }
 
+// Fonction qui est lancée au début des tours des héros et qui réinitialise les valeurs de défense et d'action réalisées
 function debut_tour_heros(){
     afficher("C'est au tour des héros d'agir.",3000);
     for(d=0; d<4; d++){
@@ -357,6 +367,7 @@ function debut_tour_heros(){
     boutons_debut_tour();
 }
 
+// Fonction qui gère quels boutons seront disponibles au début du tour des héros
 function boutons_debut_tour(){
     for(heroo=0; heroo<4; heroo++){
         if(heros_en_vie[heroo]){
@@ -370,6 +381,7 @@ function boutons_debut_tour(){
     }
 }
 
+// Fonction qui décrémente les valeurs de tours_boutons correspondants aux nombres de tours de blocage des actions
 function decremente_bouton(hr,ac){
     tours_boutons[3*hr+ac] = Math.max(tours_boutons[3*hr+ac] - 1,0);
     if(tours_boutons[3*hr+ac] == 0){
@@ -377,6 +389,8 @@ function decremente_bouton(hr,ac){
     }
 }
 
+// Fonction qui est lancée au début des tours des monstres et qui gère les dégats de poison qu'ils prendront ainsi que leurs attaques
+// puis repasse au tour des héros
 function debut_tour_monstres(){
     afficher("C'est au tour des monstres d'agir.",3000);
     for(po=0; po<3; po++){
@@ -386,6 +400,7 @@ function debut_tour_monstres(){
             if(hp_monstres[po].innerHTML == 0){
                 monstres_en_vie[po] = false;
                 nb_monstres -= 1;
+                images_monstres[po].style.opacity = 0;
                 cibles_boutons[po] = 1;
             }
         }
@@ -400,7 +415,7 @@ function debut_tour_monstres(){
             var ind_hero = randomInt(1,nb_heros);
             heros_actif = get_ind_heros(ind_hero);            
             //setTimeout(() => {action_attaque_monstre(i);}, 2000);
-            action_attaque_monstre(i);
+            action_attaque_monstre(i);            
             if(nb_heros == 0){
                 afficher_simple("Malheureusement, les monstres vous ont vaincu !");
                 return;
@@ -436,69 +451,11 @@ function over_monstre3() {
     }
 }
 
-// Lancement du jeu et du premier tour
-onload = afficher("Le jeu commence !",4000);
-onload = setTimeout(() => {debut_tour_heros();}, 3000);
-
 // Affichage des informations des monstres lorsque l'on passe la souris au-dessus
 image_monstre_1.onmouseover = over_monstre1;
 image_monstre_2.onmouseover = over_monstre2;
 image_monstre_3.onmouseover = over_monstre3;
 
-/*b_att1.onclick = attente_cible();
-b_att2.onclick = attente_cible();
-b_att3.onclick = attente_cible();
-b_att4.onclick = attente_cible();*/
-
-/*b_att1.addEventListener("click",attente_cible(1));
-b_att2.addEventListener("click",attente_cible(2));
-b_att3.addEventListener("click",attente_cible(3));
-b_att4.addEventListener("click",attente_cible(4));*/
-
-
-
-
-
-//POUBELLE
-
-/*function change_opac(champ,val){
-    champ.style.opacity = val;
-}*/
-
-/*function change_opac(champ){
-    champ.style.opacity = "1";
-    champ.onmouseout = function(){
-        champ.style.opacity = "0";
-    }
-}*/
-
-/*monstre_1.onmouseover = function () {
-    monstre_1.style.opacity = "1";
-    afficher("Ceci est le monstre 1");
-    monstre_1.onmouseout = function(){
-        monstre_1.style.opacity = "0";
-    }
-}*/
-
-//monstre_3.onmouseover = change_opac(monstre_3);
-
-//monstre_1.addEventListener("onmouseover",afficher("Ceci est le monstre 1"));
-//monstre_1.onmouseover = change_opac(monstre_1);
-
-/*function fin_jeu(n){
-    if(n == 1){
-        afficher("Malheureusement, les monstres vous ont vaincu !",300000);
-    }
-    else{
-        afficher("Félicitation, vous triomphez des monstres !",300000);
-    }
-}*/
-
-/*tours_boutons[3*heros_actif+action_active] = 2;
-tours_boutons[3*heros_actif+1] = 1;
-if(action_active == 0){
-    tours_boutons[3*heros_actif+2] = 1;
-}
-else{
-    tours_boutons[3*heros_actif+0] = 1;
-}*/
+// Lancement du jeu et du premier tour
+onload = afficher("Le jeu commence !",4000);
+onload = setTimeout(() => {debut_tour_heros();}, 3000);
