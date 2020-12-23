@@ -8,19 +8,78 @@
 	<body>
 		
 		<div class="monstres">
-			<div id="monstre1"> Monstre 1 </div>
-			<div id="monstre2"> Monstre 2 </div>
-			<div id="monstre3"> Monstre 3 </div>
-			<div id="monstre4"> Monstre 4 </div>
+			<div class="monstre" id="monstre1"> 
+				<div> Ennemi 1 </div>
+				<div class="HP"> HP = <div id="hpmonstre1"> 120 </div> </div>
+				<button id="Cible1" disabled=true onclick="choix_cible(0)"> Cible </button>
+			</div>
+			<div class="monstre" id="monstre2"> 
+				<div> Ennemi 2 </div>
+				<div class="HP"> HP = <div id="hpmonstre2"> 120 </div> </div>
+				<button id="Cible2" disabled=true onclick="choix_cible(1)"> Cible </button>
+			</div>
+			<div class="monstre" id="monstre3"> 
+				<div> Ennemi 3 </div>
+				<div class="HP"> HP = <div id="hpmonstre3"> 120 </div> </div>
+				<button id="Cible3" disabled=true onclick="choix_cible(2)"> Cible </button>
+			</div>
+		</div>
+
+		<div id="infos">
 		</div>
 
 		<div class="heros">
-			<div id="heros1"> Héros 1 </div>
-			<div id="heros2"> Héros 2 </div>
-			<div id="heros3"> Héros 3 </div>
-			<div id="heros4"> Héros 4 </div>
+			<div class="hero" id="heros1"> 
+				<div> Héros 1 </div>
+				<div class="HP"> HP = <div id="hpheros1"> 100 </div> </div>
+				<div class="MP"> MP = <div id="mpheros1"> 50 </div> </div>
+				<div class="ATT"> ATT = <div id="attheros1"> 20 </div> </div>
+				<div class="DEF"> DEF = <div id="defheros1"> 10 </div> </div>
+<!--<input type="button" class="button" id="AttaqueH1" value="Attaque" disabled=true>-->
+				<button id="AttaqueH1" disabled=true onclick="att_cible(0)"> Attaque </button>
+				<button id="DefenseH1" disabled=true onclick="defense(0)"> Défense </button>
+				<button id="SpecialH1" disabled=true onclick="soin()"> Spécial </button>
+				<div class="COUT"> COUT = <div id="coutheros1"> 15 </div> </div>
+			</div>
+			<div class="hero" id="heros2"> 
+				<div> Héros 2 </div>
+				<div class="HP"> HP = <div id="hpheros2"> 100 </div> </div>
+				<div class="MP"> MP = <div id="mpheros2"> 50 </div> </div>
+				<div class="ATT"> ATT = <div id="attheros2"> 20 </div> </div>
+				<div class="DEF"> DEF = <div id="defheros2"> 10 </div> </div>
+				<button id="AttaqueH2" disabled=true onclick="att_cible(1)"> Attaque </button>
+				<button id="DefenseH2" disabled=true onclick="defense(1)"> Défense </button>
+				<button id="SpecialH2" disabled=true onclick="poi_cible()"> Spécial </button>
+				<div class="COUT"> COUT = <div id="coutheros2"> 10 </div> </div>
+			</div>
+			<div class="hero" id="heros3"> 
+				<div> Héros 3 </div>
+				<div class="HP"> HP = <div id="hpheros3"> 100 </div> </div>
+				<div class="MP"> MP = <div id="mpheros3"> 50 </div> </div>
+				<div class="ATT"> ATT = <div id="attheros3"> 20 </div> </div>
+				<div class="DEF"> DEF = <div id="defheros3"> 10 </div> </div>
+				<button id="AttaqueH3" disabled=true onclick="att_cible(2)"> Attaque </button>
+				<button id="DefenseH3" disabled=true onclick="defense(2)"> Défense </button>
+				<button id="SpecialH3" disabled=true onclick="swap_hp()"> Spécial </button>
+				<div class="COUT"> COUT = <div id="coutheros3"> 25 </div> </div>
+			</div>
+			<div class="hero" id="heros3"> 
+				<div> Héros 4 </div>
+				<div class="HP"> HP = <div id="hpheros4"> 100 </div> </div>
+				<div class="MP"> MP = <div id="mpheros4"> 50 </div> </div>
+				<div class="ATT"> ATT = <div id="attheros4"> 20 </div> </div>
+				<div class="DEF"> DEF = <div id="defheros4"> 10 </div> </div>
+				<button id="AttaqueH4" disabled=true onclick="att_cible(3)"> Attaque </button>
+				<button id="DefenseH4" disabled=true onclick="defense(3)"> Défense </button>
+				<button id="SpecialH4" disabled=true onclick="tente_def()"> Spécial </button>
+				<div class="COUT"> COUT = <div id="coutheros4"> 20 </div> </div>
+			</div>
 		</div>
-      
+	
+		<div id="debug"> </div>
+
 	</body>
+	
+	<script src="battle_rpg.js"></script>
 	
 </html>
