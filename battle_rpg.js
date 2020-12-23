@@ -113,6 +113,7 @@ function get_ind_heros(j){
     }
 }
 
+// Vérifie si tous les héros en vie ont réalisé leurs actions pour ce tour
 function toutes_actions_faites(){
     var tour_suivant = true;
     for(t=0; t<4; t++){
@@ -145,6 +146,7 @@ function hero_moins_hp(){
     return ind_moins;
 }
 
+// Ajoute 1 ou 2 au tableau qui gère les désactivations de boutons, selon quelle action a été réalisée
 function gestion_tours_boutons(){
     tours_boutons[3*heros_actif+action_active] = 2;
     if(action_active == 0){
@@ -162,8 +164,7 @@ function gestion_tours_boutons(){
     }
 }
 
-// Fonctions changement d'états
-
+// Fonctions pour les attaques de héros sur des monstres
 function action_attaque_heros(){
     hp_monstres[cible_active].innerHTML = Math.max(hp_monstres[cible_active].innerHTML - att_heros[heros_actif].innerHTML,0);
     if(hp_monstres[cible_active].innerHTML == 0){
@@ -173,6 +174,7 @@ function action_attaque_heros(){
     }
 }
 
+// Fonctions pour les attaques de monstres sur des héros
 function action_attaque_monstre(monst){
     var degats = Math.max(hp_heros[heros_actif].innerHTML - Math.max(attaque_monstre - def_heros[heros_actif].innerHTML,0),0);
     hp_heros[heros_actif].innerHTML = degats;
@@ -192,6 +194,7 @@ function poison(){
     poison_m[cible_active] += 7;
 }
 
+// Fonction appelée lorsqu'un bouton d'attaque est utilisé, et gère les boutons à désactiver ou activer en conséquence
 function att_cible(h_actif){
     heros_actif = h_actif;
     action_active = 0;
@@ -206,12 +209,15 @@ function att_cible(h_actif){
     gestion_boutons_m();
 }
 
+// Pouvoir du héros 3 qui échange ses HP avec un monstre au choix, sans qu'il puisse gagner plus d'HP que sa valeur de départ
 function swap(){
     var aux_hp = Number(hp_heros[heros_actif].innerHTML);
     hp_heros[heros_actif].innerHTML = Math.min(hp_monstres[cible_active].innerHTML,100);
     hp_monstres[cible_active].innerHTML = aux_hp;
 }
 
+// Fonction appelée lorsqu'un bouton de défense est utilisé, change la valeur de défense, gère les boutons,
+// et vérifie si toutes les actions ont été réalisées, auquel cas c'est au tour des monstres
 function defense(bh){
     heros_actif = bh;
     action_active = 1;
@@ -398,7 +404,7 @@ function debut_tour_monstres(){
             }
         }
     }
-    setTimeout(() => {debut_tour_heros();}, 2000);
+    setTimeout(() => {debut_tour_heros();}, 3000);
 }
 
 //Affichage des infos des monstres lorsque l'on passe le curseur sur eux
